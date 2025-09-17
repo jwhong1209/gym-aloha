@@ -1,0 +1,44 @@
+<mujoco model="mobile_aloha">
+    <compiler angle="radian" meshdir="assets" autolimits="true" inertiafromgeom="auto" inertiagrouprange="4 5"/>
+
+    <option cone="elliptic" impratio="10"/>
+
+    <asset>
+        <material name="black" rgba="0.15 0.15 0.15 1"/>
+        
+        <mesh name="mobile_aloha_base" file="mobile_aloha_base.stl" scale="0.001 0.001 0.001" />
+        <mesh name="vx300s_1_base" file="vx300s_1_base.stl" scale="0.001 0.001 0.001" />
+        <mesh name="vx300s_2_shoulder" file="vx300s_2_shoulder.stl" scale="0.001 0.001 0.001" />
+        <mesh name="vx300s_3_upper_arm" file="vx300s_3_upper_arm.stl" scale="0.001 0.001 0.001" />
+        <mesh name="vx300s_4_upper_forearm" file="vx300s_4_upper_forearm.stl" scale="0.001 0.001 0.001" />
+        <mesh name="vx300s_5_lower_forearm" file="vx300s_5_lower_forearm.stl" scale="0.001 0.001 0.001" />
+        <mesh name="vx300s_6_wrist" file="vx300s_6_wrist.stl" scale="0.001 0.001 0.001" />
+        <mesh name="vx300s_7_gripper" file="vx300s_7_gripper.stl" scale="0.001 0.001 0.001" />
+        <mesh name="vx300s_8_gripper_prop" file="vx300s_8_gripper_prop.stl" scale="0.001 0.001 0.001" />
+        <mesh name="vx300s_9_gripper_bar" file="vx300s_9_gripper_bar.stl" scale="0.001 0.001 0.001" />
+        <mesh name="vx300s_10_gripper_finger_left" file="vx300s_10_custom_finger_left.stl" scale="0.001 0.001 0.001" />
+        <mesh name="vx300s_10_gripper_finger_right" file="vx300s_10_custom_finger_right.stl" scale="0.001 0.001 0.001" />
+    </asset>
+
+  <default>
+    <default class="visual">
+      <geom type="mesh" mass="0" group="2" material="black" contype="0" conaffinity="0"/>
+    </default>
+
+    <default class="collision">
+      <geom group="3" type="mesh" condim="6" friction="1 5e-3 5e-4" solref=".01 1"/>
+      <default class="sphere_collision">
+        <geom type="sphere" size="0.0006" rgba="1 0 0 1"/>
+      </default>
+    </default>
+  </default>
+
+  <worldbody>
+    <body name="mobile_base" pos="0 0 0" quat="0 0 0.7071 0.7071">
+        <geom pos="0 0 0" size="0.2 0.2 0.1" type="box" rgba="0.15 0.15 0.15 0.5" class="visual"/>
+        <geom pos="0 0 0" size="0.2 0.2 0.1" mesh="mobile_aloha_base" material="black" class="visual"/>
+
+    </body>
+  </worldbody>
+    
+</mujoco>
